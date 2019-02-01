@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FinalExam.Models.Question>
+
+@{
+    ViewBag.Title = "Play";
+}
+
+<h2>Play</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionText)
+        </th>
+
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionText)
+            </td>
+
+            <td>
+                @Html.ActionLink("Answer", "Answer", new { id = item.QuestionID }, new { @class = "btn btn-primary" })
+        </tr>
+        @Html.HiddenFor(model => item.Answer1)
+
+        @Html.HiddenFor(model => item.Answer2)
+
+        @Html.HiddenFor(model => item.Answer3)
+
+        @Html.HiddenFor(model => item.Answer4)
+
+        @Html.HiddenFor(model => item.CorrectAnswer)
+    }
+
+</table>

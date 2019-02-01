@@ -1,0 +1,87 @@
+﻿@model FinalExam.Models.Question
+
+@{
+    ViewBag.Title = "Answer";
+}
+
+<h2>Answer</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Question</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.QuestionID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuestionText, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.QuestionText, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Answer1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               1. @Html.DisplayFor(model => model.Answer1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Answer1, "", new { @class = "text-danger" })
+                @Html.ActionLink("Select", "Answer", "Home", new {  id = 1, questID = ViewBag.QuestionID }, new { @class = "btn btn-primary", type = "submit", method = "post" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Answer2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                2.  @Html.DisplayFor(model => model.Answer2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Answer2, "", new { @class = "text-danger" })
+                @Html.ActionLink("Select", "Answer", "Home", new { id = 2, questID = ViewBag.QuestionID }, new { @class = "btn btn-primary", type = "submit", method = "post" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Answer3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                3. @Html.DisplayFor(model => model.Answer3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Answer3, "", new { @class = "text-danger" })
+                @Html.ActionLink("Select", "Answer", "Home", new { id = 3, questID = ViewBag.QuestionID }, new { @class = "btn btn-primary", type = "submit", method = "post" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Answer4, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                4. @Html.DisplayFor(model => model.Answer4, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Answer4, "", new { @class = "text-danger" })
+                @Html.ActionLink("Select", "Answer", "Home", new { id = 4, questID = ViewBag.QuestionID }, new { @class = "btn btn-primary", type = "submit", method = "post" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.CorrectAnswer, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.CorrectAnswer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CorrectAnswer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryID, "CategoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Category.CategoryDesc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @*<input type="submit" value="Save" class="btn btn-default" />*@
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
